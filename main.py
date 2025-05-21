@@ -1,10 +1,10 @@
 import pandas as pd
-import openai
 import os
+from openai import OpenAI
 from dotenv import load_dotenv
 
 load_dotenv()  # Load environment variables from .env file
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def carregar_tabela(caminho_arquivo):
     return pd.read_csv(caminho_arquivo)
@@ -21,12 +21,14 @@ Resposta:"""
 
 def responder(pergunta, tabela):
     prompt = gerar_prompt(pergunta, tabela)
-    response = openai.ChatCompletion.create(
-        model="gpt-4",  # ou "gpt-3.5-turbo"
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0.3,
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+        ]
     )
-    return response['choices'][0]['message']['content'].strip()
+    return response.choices[0].message.content.strip()
 
 if __name__ == "__main__":
     tabela = carregar_tabela("data/products.csv")
