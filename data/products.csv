@@ -1,0 +1,11 @@
+product,sales,price_unit,total,client
+Laptop,5,999.99,4999.95,TechCorp
+Smartphone,10,599.99,5999.90,MobileWorld
+Monitor,3,299.99,899.97,OfficeSupplies
+Keyboard,15,49.99,749.85,GameStation
+Mouse,20,29.99,599.80,ComputerHub
+Headphones,8,79.99,639.92,AudioStore
+Printer,2,199.99,399.98,PrintSolutions
+Tablet,6,399.99,2399.94,DigitalStore
+Camera,4,449.99,1799.96,PhotoPro
+Speaker,12,89.99,1079.88,SoundMaster
